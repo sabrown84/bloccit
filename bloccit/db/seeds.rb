@@ -8,12 +8,10 @@ require "random_data"
 end
 posts = Post.all
 
-1.times do
-  Post.find_or_create_by(
-    title: "Travel Channel",
-    body: "I'll be home again soon!"
-  )
-end
+Post.find_or_create_by(
+  title: "Travel Channel",
+  body: "I'll be home again soon!"
+)
 
 posts = Post.all
 
@@ -25,12 +23,10 @@ posts = Post.all
   )
 end
 
-1.times do
-  Comment.find_or_create_by(
-    post: posts.sample,
-    body: "Hello Again!"
-  )
-end
+Comment.find_or_create_by(
+  post: posts.sample,
+  body: "Hello Again!"
+)
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
