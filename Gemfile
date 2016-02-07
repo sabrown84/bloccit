@@ -6,11 +6,12 @@ gem 'rails', '4.2.5'
 
 group :production do
    gem 'rails_12factor'
+   gem 'pg'
 end
 
-group :production do
-  gem 'pg'
-end
+#group :development do
+#  gem 'sqlite3'
+#end
 
 group :development, :test do
    gem 'rspec-rails', '~> 3.0'
@@ -41,7 +42,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'pg'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
