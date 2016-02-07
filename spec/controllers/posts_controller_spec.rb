@@ -33,4 +33,5 @@ let(:my_post) { Post.create!(title: RandomData.random_sentence, body: RandomData
 #     get :edit
 #     expect(response).to have_http_status(:success)
 #   end
-# end 
+# end
+end
