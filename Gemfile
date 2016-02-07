@@ -8,14 +8,13 @@ group :production do
    gem 'rails_12factor'
 end
 
-gem 'sqlite3', :group => [:development, :test]
 group :production do
-  gem 'thin'
   gem 'pg'
 end
 
 group :development, :test do
    gem 'rspec-rails', '~> 3.0'
+   gem 'sqlite3'
 end
 
 # Use sqlite3 as the database for Active Record
