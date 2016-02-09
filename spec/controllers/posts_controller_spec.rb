@@ -1,4 +1,5 @@
 require 'rails_helper'
+include RandomData
 
 RSpec.describe PostsController, type: :controller do
 
@@ -28,7 +29,7 @@ let(:my_post) { Post.create!(title: RandomData.random_sentence, body: RandomData
        expect(assigns(:post)).to eq(my_post)
      end
    end
-   
+
 
  describe "GET new" do
    it "returns http success" do
