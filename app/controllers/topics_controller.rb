@@ -1,13 +1,11 @@
 class TopicsController < ApplicationController
-  def index
-    @topics = Topic.all
-  end
 
   def show
     @topic = Topic.find(params[:id])
   end
 
   def new
+    @sponsored_post = SponsoredPost.find(params[:sponsored_post_id])
     @topic =Topic.new
   end
 
@@ -16,9 +14,12 @@ class TopicsController < ApplicationController
      @topic.name = params[:topic][:name]
      @topic.description = params[:topic][:description]
      @topic.public = params[:topic][:public]
+     @sponsored_post = SponsoredPost.find(params[:sponsored_post_id])
+
+     @topic.sponsored_post = @sponsored_post
 
      if @topic.save
-       redirect_to @topic, notice: "Topic was saved successfully."
+       redirect_to [@topic,@sponsored_post], notice: "Topic was saved successfully."
      else
        flash.now[:alert] = "Error creating topic. Please try again."
        render :new
