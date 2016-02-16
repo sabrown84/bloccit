@@ -23,7 +23,7 @@ posts = Post.all
     topic: topics.sample,
     title:  RandomData.random_sentence,
     body:   RandomData.random_paragraph,
-    price:  RandomData.random_integer
+    price:  rand(10...50)
   )
 end
 
