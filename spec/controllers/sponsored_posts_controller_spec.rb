@@ -43,7 +43,7 @@ RSpec.describe SponsoredPostsController, type: :controller do
       expect{post :create, topic_id: topic.id, sponsored_post: {title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 100}}.to change(SponsoredPost,:count).by(1)
     end
 
-    it "assigns the new sponsored_post to @sponsored_post" do
+    it "assigns the new sponsored post to @sponsored_post" do
       post :create, topic_id: topic.id, sponsored_post: {title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 100}
       expect(assigns(:sponsored_post)).to eq SponsoredPost.last
     end
@@ -65,7 +65,7 @@ RSpec.describe SponsoredPostsController, type: :controller do
       expect(response).to render_template :edit
     end
 
-    it "assigns sponsored_post to be updated to @sponsored_post" do
+    it "assigns sponsored post to be updated to @sponsored_post" do
       get :edit, topic_id: topic.id, id: sponsored_post.id
 
       sponsored_post_instance = assigns :sponsored_post
@@ -113,5 +113,4 @@ RSpec.describe SponsoredPostsController, type: :controller do
         expect(response).to redirect_to topic
     end
   end
-end
 end

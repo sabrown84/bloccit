@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :posts
   before_save { self.email = email.downcase }
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
       self.name = name_array.join(" ")
     end
   end
-  
+
   after_save :set_uppercase
 
 end
