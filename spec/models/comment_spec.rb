@@ -5,7 +5,14 @@ RSpec.describe Comment, type: :model do
   let(:sponsored_post) { topic.sponsored_posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, price: RandomData.random_integer) }
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
   let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
-  let(:comment) {Comment.create!(body: 'Comment Body', post: post) }
+  let(:comment) {Comment.create!(body: 'Comment Body', post: post, user: user) }
+
+      it { is_expected.to have_may(:comments) }
+      it { is_expected.to belong_to(:post) }
+      it { is_expected.to belong_to(:user) }
+
+      it { is_expected.to validate_presence_of(:body) }
+      it { is_expected.to validate_length_of(:body).is_at_least(5) }
 
   describe "attributes" do
     it "responds to body" do
