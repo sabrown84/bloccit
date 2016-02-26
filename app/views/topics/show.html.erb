@@ -7,22 +7,20 @@
 
 <div class="row">
   <div class="col-md-8">
-    <p class="lead"><%= @topic.description %></p>
-
-    <h2>Posts</h2>
+    <p class="lead">
+      <%= render partial: "labels/list", locals: { labels: @topic.labels } %>
+      <br />
+      <%= @topic.description %>
+    </p>
     <% @topic.posts.each do |post| %>
-      <%= render partial: 'posts/post', locals: { post: post } %>
-    <% end %>
-
-    <h2>Sponsored Posts</h2>
-        <% @topic.sponsored_posts.each do |sponsored_post| %>
           <div class="media">
             <div class="media-body">
               <h4 class="media-heading">
-                <%= link_to sponsored_post.title, topic_sponsored_post_path(@topic, sponsored_post) %>
+                <%= link_to post.title, topic_post_path(@topic, post) %>
+                <%= render partial: "labels/list", locals: { labels: post.labels } %>
               </h4>
               <small>
-                submitted <%= time_ago_in_words(sponsored_post.created_at) %> ago <br>
+                submitted <%= time_ago_in_words(post.created_at) %> ago <br>
               </small>
             </div>
           </div>
