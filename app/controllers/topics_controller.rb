@@ -12,16 +12,19 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @sponsored_post = SponsoredPost.find(params[:sponsored_post_id])
-    @topic =Topic.new
+    @topic = Topic.new
   end
 
   def create
      @topic = Topic.new(topic_params)
 
 
+
      if @topic.save
        @topic.labels = Label.update_labels(params[:topic][:labels])
+
+
+     if @topic.save
        redirect_to @topic, notice: "Topic was saved successfully."
      else
        flash.now[:alert] = "Error creating topic. Please try again."
@@ -73,3 +76,4 @@ class TopicsController < ApplicationController
         end
       end
     end
+  end
