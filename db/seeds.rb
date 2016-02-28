@@ -35,6 +35,7 @@ posts = Post.all
     body: RandomData.random_paragraph
   )
 end
+comments = Comment.all
 
 100.times do
   Advertisement.create!(
@@ -63,6 +64,12 @@ member = User.create!(
   name:     'Member User',
   email:    'member@example.com',
   password: 'helloworld'
+)
+moderator = User.create!(
+  name:     'Moderator User',
+  email:    'moderator@example.com',
+  password: 'helloworld',
+  role:     'moderator'
 )
 
 puts "Seed finished"
