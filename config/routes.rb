@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
 
-  resources :labels, only: [:show]
+  #resources :labels, only: [:show]
 
   resources :topics do
   resources :advertisements
   resources :questions
   resources :posts, except: [:index]
-  resources :sponsored_posts, except: [:index]
+  #resources :sponsored_posts, except: [:index]
 end
 
   resources :posts, only: [] do
