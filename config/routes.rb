@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  #resources :labels, only: [:show]
+  resources :labels, only: [:show]
 
   resources :topics do
   resources :advertisements
