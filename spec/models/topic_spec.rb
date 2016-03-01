@@ -8,7 +8,10 @@ RSpec.describe Topic, type: :model do
   it { is_expected.to have_many(:sponsored_post) }
   it { is_expected.to have_many(:labelings) }
   it { is_expected.to have_many(:labels).through(:labelings) }
-  
+
+  it { is_expected.to have_many(:commentings) }
+  it { is_expected.to have_many(:comments).through(:commentings) }
+
 
   describe "attributes" do
     it "responds to name" do
