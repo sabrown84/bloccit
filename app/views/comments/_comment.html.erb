@@ -7,5 +7,10 @@
       <% end %>
     </small>
     <p><%= comment.body %></p>
+    <p class="lead">
+      <% render partial: "comment/list", locals: { comment: @topic.comments } %>
+      <br />
+      <%= @topic.body %>
+    </p>
   </div>
 </div>

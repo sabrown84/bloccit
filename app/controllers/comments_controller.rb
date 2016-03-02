@@ -8,6 +8,9 @@ class CommentsController < ApplicationController
        comment.user = current_user
 
        if comment.save
+         @topic.comments = Comment.update_comment(params[:topic][:comments])
+         @post.comments = Comment.update_comment(params[:post][:comments])
+
          flash[:notice] = "Comment saved successfully."
          redirect_to [@post.topic, @post]
        else

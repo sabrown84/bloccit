@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :posts, except: [:index]
   resources :sponsored_posts, except: [:index]
+  resources :comments, only: [:create, :destroy]
 end
 
   resources :posts, only: [] do
