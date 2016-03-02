@@ -10,7 +10,11 @@
 #      resolved: false
 #    )
 #  end
+<<<<<<< HEAD
 
+=======
+#
+>>>>>>> checkpoint-42
 #  describe "GET #index" do
 #    it "returns http success" do
 #      get :index
