@@ -113,5 +113,4 @@
 #        expect(response).to redirect_to topic
 #    end
 #  end
->>>>>>> checkpoint-42
 #end

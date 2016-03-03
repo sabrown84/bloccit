@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 
 gem 'shoulda'
+gem 'factory_girl_rails', '~> 4.0'
 
 group :production do
    gem 'rails_12factor'
