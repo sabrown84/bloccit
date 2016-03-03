@@ -13,7 +13,7 @@ RSpec.describe Post, type: :model do
   it { is_expected.to have_many(:comments) }
   it { is_expected.to have_many(:votes) }
   it { is_expected.to have_many(:favorites) }
-  
+
   it { is_expected.to belong_to(:topic) }
   it { is_expected.to belong_to(:user) }
 
@@ -21,7 +21,7 @@ RSpec.describe Post, type: :model do
   it { is_expected.to validate_presence_of(:body) }
   it { is_expected.to validate_presence_of(:topic) }
   it { is_expected.to validate_presence_of(:user) }
-  
+
   it { is_expected.to validate_length_of(:title).is_at_least(5) }
   it { is_expected.to validate_length_of(:body).is_at_least(20) }
 
@@ -76,6 +76,34 @@ RSpec.describe Post, type: :model do
          old_rank = post.rank
          post.votes.create!(value: -1)
          expect(post.rank).to eq (old_rank - 1)
+       end
+     end
+
+     describe "#create_vote" do
+       before do
+         @new_post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+       end
+
+       it "automatically updates the post with an up vote on create" do
+         expect(@new_post.up_votes).to eq(1)
+       end
+
+       it "associates the vote with the current user" do
+         expect(@new_post.votes.where(user: user).count).to eq(1)
+       end
+     end
+
+     describe "#create_favorite" do
+       before do
+         @new_post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+       end
+
+       it "automatically favorites the post" do
+         expect(@new_post.favorites.last).to_not be_nil
+       end
+
+       it "associates the favorite with the current user" do
+         expect(@new_post.favorites.last.user.id).to eq(user.id)
        end
      end
    end
