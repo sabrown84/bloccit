@@ -44,6 +44,7 @@ gem 'bootstrap-sass'
 # gem 'unicorn'
 gem 'bcrypt'
 
+gem 'figaro', '1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
