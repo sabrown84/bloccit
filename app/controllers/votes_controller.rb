@@ -1,6 +1,10 @@
 class VotesController < ApplicationController
   before_action :require_sign_in
 
+   def show
+     @vote = Vote.find(params[:id])
+   end
+
    def up_vote
      update_vote(1)
      redirect_to :back
