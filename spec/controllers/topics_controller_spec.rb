@@ -4,7 +4,8 @@ include SessionsHelper
 
 RSpec.describe TopicsController, type: :controller do
  let(:my_topic) { create(:topic) }
- 
+ let(:my_private_topic) { create(:topic, public: false) }
+
   # Guest specs
 context "guest" do
   describe "GET #index" do
@@ -17,9 +18,19 @@ context "guest" do
       get :index
       expect(assigns(:topics)).to eq([my_topic])
     end
+
+    it "does not include private topics in @topics" do
+      get :index
+      expect(assigns(:topics)).not_to include(my_private_topic)
+    end
   end
 
   describe "GET #show" do
+    it "redirects from private topics" do
+      get :show, {id: my_private_topic.id}
+      expect(response).to redirect_to(new_session_path)
+    end
+
     it "returns http success" do
       get :show, {id: my_topic.id}
       expect(response).to have_http_status(:success)
@@ -90,7 +101,7 @@ context "member" do
 
     it "assigns my_topic to @topics" do
       get :index
-      expect(assigns(:topics)).to eq([my_topic])
+      expect(assigns(:topics)).to eq([my_topic, my_private_topic])
     end
   end
 
@@ -163,13 +174,14 @@ context "admin" do
       expect(response).to have_http_status(:success)
     end
 
-    it "assigns my_topic to @topics" do
+    it "assigns Topic.all to topic" do
       get :index
-      expect(assigns(:topics)).to eq([my_topic])
+      expect(assigns(:topics)).to eq([my_topic, my_private_topic])
     end
   end
 
   describe "GET #show" do
+
     it "returns http success" do
       get :show, {id: my_topic.id}
       expect(response).to have_http_status(:success)
