@@ -27,14 +27,6 @@
           </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
-
-        <%= render partial: "labels/list", locals: { labels: post.labels } %>
-          </h4>
-          <small>
-      <%= render partial: 'posts/post', locals: { post: post } %>
-    <% end %>
 
     <% if current_user %>
       <div class="col-md-4">
