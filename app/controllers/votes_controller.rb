@@ -3,13 +3,28 @@ class VotesController < ApplicationController
 
    def up_vote
      update_vote(1)
+
+     respond_to do |format|
+       format.html
+       formalt.js
+
      redirect_to :back
+
+     end
    end
 
    def down_vote
      update_vote(-1)
+
+     respond_to do |format|
+       format.html
+       formalt.js
+
      redirect_to :back
+     
+     end
    end
+
 
    private
    def update_vote(new_value)
