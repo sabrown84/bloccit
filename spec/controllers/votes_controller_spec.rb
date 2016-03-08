@@ -53,13 +53,13 @@ RSpec.describe VotesController, type: :controller do
          it ":back redirects to posts show page" do
            request.env["HTTP_REFERER"] = topic_post_path(my_topic, user_post)
            post :up_vote, format: :js, post_id: user_post.id
-           expect(response).to redirect_to([my_topic, user_post])
+           expect(response).to have_http_status(:success)
          end
 
          it ":back redirects to posts topic show" do
            request.env["HTTP_REFERER"] = topic_path(my_topic)
            post :up_vote, format: :js, post_id: user_post.id
-           expect(response).to redirect_to(my_topic)
+           expect(response).to have_http_status(:success)
          end
        end
        describe "POST down_vote" do
@@ -85,13 +85,13 @@ RSpec.describe VotesController, type: :controller do
        it ":back redirects to posts show page" do
          request.env["HTTP_REFERER"] = topic_post_path(my_topic, user_post)
          post :down_vote, format: :js, post_id: user_post.id
-         expect(response).to redirect_to([my_topic, user_post])
+         expect(response).to have_http_status(:success)
        end
 
        it ":back redirects to posts topic show" do
          request.env["HTTP_REFERER"] = topic_path(my_topic)
          post :down_vote, format: :js, post_id: user_post.id
-         expect(response).to redirect_to(my_topic)
+         expect(response).to have_http_status(:success)
        end
      end
     end

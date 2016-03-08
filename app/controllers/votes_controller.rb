@@ -6,9 +6,7 @@ class VotesController < ApplicationController
 
      respond_to do |format|
        format.html
-       formalt.js
-
-     redirect_to :back
+       format.js
 
      end
    end
@@ -18,10 +16,8 @@ class VotesController < ApplicationController
 
      respond_to do |format|
        format.html
-       formalt.js
+       format.js
 
-     redirect_to :back
-     
      end
    end
 
