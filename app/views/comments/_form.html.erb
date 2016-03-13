@@ -3,11 +3,6 @@
   <div class="form-group">
     <%= f.label :body, class: 'sr-only' %>
     <%= f.text_field :body, class: 'form-control', placeholder: "Enter a new comment" %>
-    <p class="lead">
-      <% render partial: "comment/list", locals: { comments: @topic.comments } %>
-      <br />
-      <%= @topic.body %>
-    </p>
   </div>
-  <%= f.submit "Submit Comment", class: 'btn btn-default pull-right' %>
+  <%= f.submit "Submit Comment" %>
 <% end %>

@@ -12,7 +12,6 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @sponsored_post = SponsoredPost.find(params[:sponsored_post_id])
     @topic =Topic.new
   end
 

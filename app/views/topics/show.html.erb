@@ -26,15 +26,12 @@
           </div>
         <% end %>
       </div>
-      <% @topic.comments.each do |comment| %>
-            <div class="media">
-              <div class="media-body">
-                <h4 class="media-heading">
-                  <%= link_to comment.body, topic_comment_path(@topic, comment) %>
-                </h4>
-              </div>
-            </div>
-          <% end %>
+      <h3>Comments</h3>
+      <%= render @topic.comments %>
+    </div>
+    <% if current_user %>
+      <%= render 'comments/form', comment: Comment.new, post: @topic %>
+    <% end %>
 
     <% if current_user %>
       <div class="col-md-4">
