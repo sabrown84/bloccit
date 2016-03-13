@@ -4,11 +4,12 @@ class Api::V1::CommentsController < Api::V1::BaseController
 
   def index
     if params[:post_id]
+      post = Post.find(params[:post_id])
       comments = post.comments
     else
     comments = Comment.all
   end
-  
+
     render json: comments.to_json, status: 200
   end
 

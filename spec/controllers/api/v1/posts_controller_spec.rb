@@ -11,19 +11,29 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
+    it "GET #index returns http success with a topic id" do
+      get :index, topic_id: my_topic.id
+      expect(response).to have_http_status(:success)
+    end
+
     it "GET #show returns http success" do
       get :show, id: my_post.id
       expect(response).to have_http_status(:success)
     end
   end
 
-  context "unauthorized user" do
+  context "authorized user" do
     before do
       controller.request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Token.encode_credentials(my_user.auth_token)
     end
 
     it "GET #index returns http success" do
       get :index
+      expect(response).to have_http_status(:success)
+    end
+
+    it "GET #index returns http success with a topic id" do
+      get :index, topic_id: my_topic.id
       expect(response).to have_http_status(:success)
     end
 

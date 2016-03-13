@@ -14,12 +14,17 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
     end
 
     it "GET #show returns http success" do
-      get :show, id: my_comment.id
+      get :index, post_id: my_post.id
       expect(response).to have_http_status(:success)
     end
-  end
 
-  context "unauthorized user" do
+    it "GET #index returns http success with post id" do
+        get :index, post_id: my_post.id
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+  context "authorized user" do
     before do
       controller.request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Token.encode_credentials(my_user.auth_token)
     end
@@ -29,8 +34,13 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
+    it "GET #index returns http success with post id" do
+      get :index, post_id: my_post.id
+      expect(response).to have_http_status(:success)
+    end
+
     it "GET #show returns http success" do
-      get :show, id: my_comment.id
+      get :show, post_id: my_post.id, id: my_comment.id
       expect(response).to have_http_status(:success)
     end
   end
