@@ -28,11 +28,11 @@ end
 
   namespace :api do
     namespace :v1 do
+      resources :posts
       resources :users, only: [:index, :show, :create, :update]
-      resources :topics, except: [:edit, :new] do
-        resources :posts, only: [:create]
+      resources :topics do
+        resources :posts , only: [:index, :show, :create, :update, :delete]
       end
-      resources :posts, only: [:update, :destroy]
     end
   end
 end
