@@ -3,13 +3,7 @@ class Api::V1::PostsController < Api::V1::BaseController
   before_filter :authorize_user, except: [:index, :show]
 
   def index
-    if params[:topic_id]
-      topic = Topic.find(params[:topic_id])
-      posts = topic.posts
-    else
-      posts = Post.all
-    end
-    
+    posts = Post.all
     render json: posts.to_json, status: 200
   end
 
