@@ -1,32 +1,15 @@
-== README
+# Bloccit
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## A Reddit replica to teach the fundamentals of web development and Rails.
 
-Things you may want to cover:
+Tools Used:
 
-* Ruby version
+- Bootstrap
+- Ruby on Rails
+- HTML
+- AJAX
 
-* System dependencies
+<img width="1252" alt="screen shot 2016-10-26 at 6 03 32 pm" src="https://cloud.githubusercontent.com/assets/16665894/19746917/924825da-9ba6-11e6-9622-4dadd502220f.png">
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
-## Bloccit: a Reddit replica to teach the fundamentals of web development and Rails.
 
 Made with my mentor at [Bloc](http://bloc.io).
